@@ -51,7 +51,7 @@ class ExchangeRateViewController: UIViewController {
     } ()
     let toText: UITextField = {
         let to = UITextField()
-        to.placeholder = "Enter desired currencies "
+        to.placeholder = "Separated by come with no space "
         return to
     }()
     

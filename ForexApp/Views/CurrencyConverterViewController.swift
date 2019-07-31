@@ -58,6 +58,23 @@ class CurrencyConverterViewController: UIViewController {
         return btn
     }()
     
+    let fromtext: UITextField = {
+        let from = UITextField()
+        from.placeholder = "Enter base currency "
+        return from
+    } ()
+    let toText: UITextField = {
+        let to = UITextField()
+        to.placeholder = "Enter desired currency "
+        return to
+    }()
+    
+    let amount: UITextField = {
+        let to = UITextField()
+        to.placeholder = "Enter Amount "
+        return to
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -111,14 +128,37 @@ class CurrencyConverterViewController: UIViewController {
             make.width.equalTo(500)
         }
         
+        self.view.addSubview(fromtext)
+        fromtext.snp.makeConstraints { (make) in
+            make.top.equalTo(appName.snp.bottom).offset(60)
+            make.left.equalTo(fromLabel.snp.right).offset(10)
+            make.width.equalTo(200)
+        }
+        
+        self.view.addSubview(toText)
+        toText.snp.makeConstraints { (make) in
+            make.top.equalTo(fromtext.snp.bottom).offset(30)
+            make.left.equalTo(toLabel.snp.right).offset(10)
+            make.width.equalTo(200)
+        }
+        
+        self.view.addSubview(amount)
+        amount.snp.makeConstraints { (make) in
+            make.top.equalTo(toText.snp.bottom).offset(30)
+            make.left.equalTo(amountLabel.snp.right).offset(10)
+            make.width.equalTo(200)
+        }
+        
         claculateButton.addTarget(self, action: #selector(claculateButtonTapped), for: .touchUpInside)
     }
     
     @objc func claculateButtonTapped(){
         let currencyConVM = CurrencyConverterViewModel()
-        let from = "USD"
-        let to = "INR"
-        let amount = 10.00
+        let from = self.fromtext.text ?? ""
+        let to = self.toText.text ?? ""
+        let amountText = self.amount.text ?? ""
+        let amountAsDouble = Double(amountText)
+        let amount = amountAsDouble ?? 0.0
         var fromStr = ""
         var toStr = ""
         currencyConVM.getConvertedCurrency(from: from, to: to, amount: amount) { (data, error) in

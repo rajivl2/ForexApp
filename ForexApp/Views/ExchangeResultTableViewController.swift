@@ -20,6 +20,7 @@ class ExchangeResultTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(DetailsTableViewCell.self, forCellReuseIdentifier: "cell")
+        self.navigationController?.isNavigationBarHidden = false
         
         getExchangeRates()
         
