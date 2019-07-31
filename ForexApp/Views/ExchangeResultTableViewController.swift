@@ -109,6 +109,7 @@ class ExchangeResultTableViewController: UITableViewController {
         let currVM = CurrencyConverterViewModel()
         let from = self.fromCurrency ?? ""
         let to = self.toCurrencies ?? ""
+        
         currVM.getExchangeRates(from: from, to: to) { (data, error) in
             DispatchQueue.main.async {
                 self.results = data

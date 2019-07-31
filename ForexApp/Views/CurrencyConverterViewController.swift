@@ -197,13 +197,9 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
                     self.resultLabel.text = "Not valid request. Try Again !"
                 }
             }
-            
         }
     }
     
-//    func getCurrencies(){
-//        self.currencies = ["BDT","BGN","BIF","CAD","USD","INR"]
-//    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

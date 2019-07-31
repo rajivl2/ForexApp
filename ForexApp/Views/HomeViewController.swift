@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    func setUpViews(){
+    func setUpViews() {
         
         self.view.addSubview(appName)
         appName.snp.makeConstraints { (make) in
