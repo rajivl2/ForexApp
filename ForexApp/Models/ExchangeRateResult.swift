@@ -1,5 +1,5 @@
 //
-//  CurrencyConverterResult.swift
+//  ExchangeRateResult.swift
 //  ForexApp
 //
 //  Created by Ford Labs on 31/07/19.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct CurrencyConverterResult : Codable {
+struct ExchangeRateResult : Decodable {
     
     var success: Bool
-    var query: Query?
-    var info: Info?
+    var timestamp: Double?
+    var base: String?
     var date: String?
-    var result: Double?
+    var rates: [String:Double]
 }

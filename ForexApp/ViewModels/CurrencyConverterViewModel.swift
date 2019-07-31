@@ -37,4 +37,34 @@ class CurrencyConverterViewModel {
         
     }
     
+    func getExchangeRates(from: String, to: String, completion: @escaping(_ report : ExchangeRateResult?, Error?)->Void){
+        
+        var exchangeRateResults: ExchangeRateResult?
+        
+        let urlString = "https://fixer-fixer-currency-v1.p.rapidapi.com/latest?base=\(from)&symbols=\(to)"
+        
+        guard let url = URL(string: urlString) else { fatalError("Error while parsing url") }
+        
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = headers
+        request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                exchangeRateResults = try JSONDecoder().decode(ExchangeRateResult.self, from: data)
+                completion(exchangeRateResults, nil)
+            } catch let apiError {
+                completion(nil, apiError)
+                print(apiError)
+            }
+            }.resume()
+        
+    }
+    
+    func new(){
+        
+    }
+    
 }

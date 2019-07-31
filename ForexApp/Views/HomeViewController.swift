@@ -11,6 +11,14 @@ import SnapKit
 
 class HomeViewController: UIViewController {
 
+    var appName: UILabel = {
+        let name = UILabel()
+        name.text = "FOREX"
+        name.font = UIFont.boldSystemFont(ofSize: 25)
+        name.textAlignment = .center
+        return name
+    }()
+    
     let currencyConverterButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Currency Converter", for: .normal)
@@ -33,12 +41,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
         
         setUpViews()
         
     }
 
     func setUpViews(){
+        
+        self.view.addSubview(appName)
+        appName.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(100)
+            make.width.equalTo(300)
+        }
         
         self.view.addSubview(currencyConverterButton)
         currencyConverterButton.snp.makeConstraints { (make) in

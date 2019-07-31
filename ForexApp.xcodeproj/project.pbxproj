@@ -21,6 +21,9 @@
 		61264CDE22F1943600A73D64 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CDD22F1943600A73D64 /* Query.swift */; };
 		61264CE022F1944400A73D64 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CDF22F1944400A73D64 /* Info.swift */; };
 		61264CE222F1955E00A73D64 /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE122F1955E00A73D64 /* CurrencyConverterViewModel.swift */; };
+		61264CE622F1A81E00A73D64 /* ExchangeRateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE522F1A81E00A73D64 /* ExchangeRateResult.swift */; };
+		61264CE822F1AF6C00A73D64 /* ExchangeResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */; };
+		61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		61264CDD22F1943600A73D64 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		61264CDF22F1944400A73D64 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		61264CE122F1955E00A73D64 /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		61264CE522F1A81E00A73D64 /* ExchangeRateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateResult.swift; sourceTree = "<group>"; };
+		61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeResultTableViewController.swift; sourceTree = "<group>"; };
+		61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 				61264CDB22F1941000A73D64 /* CurrencyConverterResult.swift */,
 				61264CDD22F1943600A73D64 /* Query.swift */,
 				61264CDF22F1944400A73D64 /* Info.swift */,
+				61264CE522F1A81E00A73D64 /* ExchangeRateResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +178,8 @@
 				61264CA422F18FE000A73D64 /* HomeViewController.swift */,
 				61264CD722F1936000A73D64 /* CurrencyConverterViewController.swift */,
 				61264CD922F1937A00A73D64 /* ExchangeRateViewController.swift */,
+				61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */,
+				61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,11 +326,14 @@
 				61264CDC22F1941000A73D64 /* CurrencyConverterResult.swift in Sources */,
 				61264CD822F1936000A73D64 /* CurrencyConverterViewController.swift in Sources */,
 				61264CA522F18FE000A73D64 /* HomeViewController.swift in Sources */,
+				61264CE622F1A81E00A73D64 /* ExchangeRateResult.swift in Sources */,
 				61264CDA22F1937A00A73D64 /* ExchangeRateViewController.swift in Sources */,
+				61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */,
 				61264CE222F1955E00A73D64 /* CurrencyConverterViewModel.swift in Sources */,
 				61264CDE22F1943600A73D64 /* Query.swift in Sources */,
 				61264CA322F18FE000A73D64 /* AppDelegate.swift in Sources */,
 				61264CE022F1944400A73D64 /* Info.swift in Sources */,
+				61264CE822F1AF6C00A73D64 /* ExchangeResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
