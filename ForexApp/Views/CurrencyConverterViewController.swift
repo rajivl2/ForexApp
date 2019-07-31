@@ -8,8 +8,11 @@
 
 import UIKit
 
-class CurrencyConverterViewController: UIViewController {
+class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
 
+    var currencies = ["BDT","BGN","BIF","CAD","USD","INR"]
+    var selectedOriginCur: String?
+    var selectedDestinationCur: String?
     var appName: UILabel = {
         let name = UILabel()
         name.text = "Currency Converter"
@@ -75,11 +78,25 @@ class CurrencyConverterViewController: UIViewController {
         return to
     }()
     
+    var originCurPicker: UIPickerView = {
+        let origin = UIPickerView()
+        origin.translatesAutoresizingMaskIntoConstraints = false
+        return origin
+    } ()
+    
+    var destinationCurPicker: UIPickerView = {
+        let destination = UIPickerView()
+        destination.translatesAutoresizingMaskIntoConstraints = false
+        return destination
+    } ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.isNavigationBarHidden = false
         self.view.backgroundColor = .white
+        
+        //getCurrencies()
         
         setupViews()
         
@@ -100,16 +117,30 @@ class CurrencyConverterViewController: UIViewController {
             make.width.equalTo(100)
         }
         
+        self.view.addSubview(originCurPicker)
+        originCurPicker.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(100)
+            make.left.equalTo(fromLabel.snp.right).offset(10)
+            make.width.equalTo(160)
+        }
+        
         self.view.addSubview(toLabel)
         toLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(fromLabel.snp.bottom).offset(30)
+            make.top.equalTo(originCurPicker.snp.bottom).offset(30)
             make.left.equalToSuperview().offset(10)
             make.width.equalTo(100)
         }
         
+        self.view.addSubview(destinationCurPicker)
+        destinationCurPicker.snp.makeConstraints { (make) in
+            make.top.equalTo(originCurPicker.snp.bottom)
+            make.left.equalTo(toLabel.snp.right).offset(10)
+            make.width.equalTo(160)
+        }
+        
         self.view.addSubview(amountLabel)
         amountLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(toLabel.snp.bottom).offset(30)
+            make.top.equalTo(destinationCurPicker.snp.bottom).offset(30)
             make.left.equalToSuperview().offset(10)
             make.width.equalTo(100)
         }
@@ -128,34 +159,27 @@ class CurrencyConverterViewController: UIViewController {
             make.width.equalTo(500)
         }
         
-        self.view.addSubview(fromtext)
-        fromtext.snp.makeConstraints { (make) in
-            make.top.equalTo(appName.snp.bottom).offset(60)
-            make.left.equalTo(fromLabel.snp.right).offset(10)
-            make.width.equalTo(200)
-        }
         
-        self.view.addSubview(toText)
-        toText.snp.makeConstraints { (make) in
-            make.top.equalTo(fromtext.snp.bottom).offset(30)
-            make.left.equalTo(toLabel.snp.right).offset(10)
-            make.width.equalTo(200)
-        }
+        
+        
         
         self.view.addSubview(amount)
         amount.snp.makeConstraints { (make) in
-            make.top.equalTo(toText.snp.bottom).offset(30)
+            make.top.equalTo(destinationCurPicker.snp.bottom).offset(30)
             make.left.equalTo(amountLabel.snp.right).offset(10)
             make.width.equalTo(200)
         }
+        
+        self.originCurPicker.delegate = self
+        self.destinationCurPicker.delegate = self
         
         claculateButton.addTarget(self, action: #selector(claculateButtonTapped), for: .touchUpInside)
     }
     
     @objc func claculateButtonTapped(){
         let currencyConVM = CurrencyConverterViewModel()
-        let from = self.fromtext.text ?? ""
-        let to = self.toText.text ?? ""
+        let from = selectedOriginCur ?? ""
+        let to = selectedDestinationCur ?? ""
         let amountText = self.amount.text ?? ""
         let amountAsDouble = Double(amountText)
         let amount = amountAsDouble ?? 0.0
@@ -174,6 +198,30 @@ class CurrencyConverterViewController: UIViewController {
                 }
             }
             
+        }
+    }
+    
+//    func getCurrencies(){
+//        self.currencies = ["BDT","BGN","BIF","CAD","USD","INR"]
+//    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.currencies.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.currencies[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == self.originCurPicker {
+            self.selectedOriginCur = self.currencies[row]
+        } else {
+            self.selectedDestinationCur = self.currencies[row]
         }
     }
 }
