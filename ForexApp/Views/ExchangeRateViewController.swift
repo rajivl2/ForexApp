@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ExchangeRateViewController.swift
 //  ForexApp
 //
 //  Created by Ford Labs on 31/07/19.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ExchangeRateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
+        self.view.backgroundColor = .green
+    }
+    
 
 }
-
