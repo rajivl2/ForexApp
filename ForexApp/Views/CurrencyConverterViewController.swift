@@ -10,9 +10,13 @@ import UIKit
 
 class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
 
-    var currencies = ["BDT","BGN","BIF","CAD","USD","INR"]
-    var selectedOriginCur: String?
-    var selectedDestinationCur: String?
+    var currencies = [String]()
+    
+    var supportedCurrencies = [String: String]()
+    
+    let fromCurrencyPicker = UIPickerView()
+    let toCurrencyPicker = UIPickerView()
+    
     var appName: UILabel = {
         let name = UILabel()
         name.text = "Currency Converter"
@@ -23,31 +27,34 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
     
     var fromLabel: UILabel = {
         let name = UILabel()
-        name.text = "From: "
-        //name.font = UIFont.boldSystemFont(ofSize: 25)
-        name.textAlignment = .center
+        name.text = "From "
+        name.font = UIFont.boldSystemFont(ofSize: 20)
+        name.textColor = .black
+        name.textAlignment = .left
         return name
     }()
     
     var toLabel: UILabel = {
         let name = UILabel()
-        name.text = "To: "
-        //name.font = UIFont.boldSystemFont(ofSize: 25)
-        name.textAlignment = .center
+        name.text = "To "
+        name.font = UIFont.boldSystemFont(ofSize: 20)
+        name.textColor = .black
+        name.textAlignment = .left
         return name
     }()
     
     var amountLabel: UILabel = {
         let name = UILabel()
-        name.text = "Amount: "
-        //name.font = UIFont.boldSystemFont(ofSize: 25)
-        name.textAlignment = .center
+        name.text = "Amount "
+        name.font = UIFont.boldSystemFont(ofSize: 20)
+        name.textColor = .black
+        name.textAlignment = .left
         return name
     }()
     
     var resultLabel: UILabel = {
         let name = UILabel()
-        //name.text = "Currency Converter"
+        name.textColor = .black
         name.font = UIFont.boldSystemFont(ofSize: 25)
         name.textAlignment = .center
         return name
@@ -56,50 +63,55 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
     let claculateButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Convert", for: .normal)
-        btn.backgroundColor = UIColor.clear
-        btn.setTitleColor(.blue, for: .normal)
+        btn.backgroundColor = UIColor.blue
+        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.layer.cornerRadius = 4
         return btn
     }()
     
     let fromtext: UITextField = {
         let from = UITextField()
         from.placeholder = "Enter base currency "
+        from.textColor = .black
         return from
     } ()
     let toText: UITextField = {
         let to = UITextField()
         to.placeholder = "Enter desired currency "
+        to.textColor = .black
         return to
     }()
     
     let amount: UITextField = {
         let to = UITextField()
         to.placeholder = "Enter Amount "
+        to.textColor = .black
         return to
     }()
     
-    var originCurPicker: UIPickerView = {
-        let origin = UIPickerView()
-        origin.translatesAutoresizingMaskIntoConstraints = false
-        return origin
-    } ()
-    
-    var destinationCurPicker: UIPickerView = {
-        let destination = UIPickerView()
-        destination.translatesAutoresizingMaskIntoConstraints = false
-        return destination
-    } ()
+    let currencyConVM = CurrencyConverterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.isNavigationBarHidden = false
-        self.view.backgroundColor = .white
-        
-        //getCurrencies()
+        self.view.backgroundColor = UIColor(red: 120/255, green: 150/255, blue: 200/255, alpha: 1)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BG1")!)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 120/255, green: 150/255, blue: 200/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = UIColor.black
         
         setupViews()
         
+        setToolBarForCurrencyPicker()
+        
+        fromtext.inputView = fromCurrencyPicker
+        toText.inputView = toCurrencyPicker
+        
+        fromCurrencyPicker.delegate = self
+        toCurrencyPicker.delegate = self
+        
+        addDoneButtonOnKeyboard()
     }
     
     func setupViews(){
@@ -113,36 +125,43 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         self.view.addSubview(fromLabel)
         fromLabel.snp.makeConstraints { (make) in
             make.top.equalTo(appName.snp.bottom).offset(60)
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
         }
         
-        self.view.addSubview(originCurPicker)
-        originCurPicker.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(100)
+        self.view.addSubview(fromtext)
+        fromtext.snp.makeConstraints { (make) in
+            make.top.equalTo(appName.snp.bottom).offset(60)
             make.left.equalTo(fromLabel.snp.right).offset(10)
-            make.width.equalTo(160)
+            make.right.equalToSuperview().offset(-10)
         }
         
         self.view.addSubview(toLabel)
         toLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(originCurPicker.snp.bottom).offset(30)
-            make.left.equalToSuperview().offset(10)
+            make.top.equalTo(fromLabel.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
         }
         
-        self.view.addSubview(destinationCurPicker)
-        destinationCurPicker.snp.makeConstraints { (make) in
-            make.top.equalTo(originCurPicker.snp.bottom)
+        self.view.addSubview(toText)
+        toText.snp.makeConstraints { (make) in
+            make.top.equalTo(fromtext.snp.bottom).offset(30)
             make.left.equalTo(toLabel.snp.right).offset(10)
-            make.width.equalTo(160)
+            make.right.equalToSuperview().offset(-10)
         }
         
         self.view.addSubview(amountLabel)
         amountLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(destinationCurPicker.snp.bottom).offset(30)
-            make.left.equalToSuperview().offset(10)
+            make.top.equalTo(toLabel.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
+        }
+        
+        self.view.addSubview(amount)
+        amount.snp.makeConstraints { (make) in
+            make.top.equalTo(toText.snp.bottom).offset(30)
+            make.left.equalTo(amountLabel.snp.right).offset(10)
+            make.right.equalToSuperview().offset(-10)
         }
         
         self.view.addSubview(claculateButton)
@@ -159,27 +178,13 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
             make.width.equalTo(500)
         }
         
-        
-        
-        
-        
-        self.view.addSubview(amount)
-        amount.snp.makeConstraints { (make) in
-            make.top.equalTo(destinationCurPicker.snp.bottom).offset(30)
-            make.left.equalTo(amountLabel.snp.right).offset(10)
-            make.width.equalTo(200)
-        }
-        
-        self.originCurPicker.delegate = self
-        self.destinationCurPicker.delegate = self
-        
         claculateButton.addTarget(self, action: #selector(claculateButtonTapped), for: .touchUpInside)
     }
     
     @objc func claculateButtonTapped(){
-        let currencyConVM = CurrencyConverterViewModel()
-        let from = selectedOriginCur ?? ""
-        let to = selectedDestinationCur ?? ""
+        
+        let from = self.fromtext.text ?? ""
+        let to = self.toText.text ?? ""
         let amountText = self.amount.text ?? ""
         let amountAsDouble = Double(amountText)
         let amount = amountAsDouble ?? 0.0
@@ -214,10 +219,70 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == self.originCurPicker {
-            self.selectedOriginCur = self.currencies[row]
+        let currency = self.currencies[row].prefix(3)
+        if pickerView == fromtext.inputView {
+            self.fromtext.text = String(currency)
         } else {
-            self.selectedDestinationCur = self.currencies[row]
+            self.toText.text = String(currency)
         }
+    }
+    
+    func setToolBarForCurrencyPicker(){
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneCurrencyPicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCurrencyPicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        fromtext.inputAccessoryView = toolbar
+        toText.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneCurrencyPicker(){
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelCurrencyPicker(){
+        self.view.endEditing(true)
+    }
+    
+    func getSupportedCurresciesForPicker(){
+        currencyConVM.getSupportedCurrencies { (result, error) in
+            DispatchQueue.main.async {
+                if result != nil {
+                    self.supportedCurrencies = result?.symbols ?? ["":""]
+                    self.populatePickerData()
+                }
+            }
+        }
+    }
+    
+    func populatePickerData(){
+        for (key,value) in self.supportedCurrencies {
+            self.currencies.append("\(key) - \(value)")
+        }
+        
+        self.currencies.sort { ($0 < $1)}
+    }
+    
+    func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        amount.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction(){
+        amount.resignFirstResponder()
     }
 }

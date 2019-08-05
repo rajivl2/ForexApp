@@ -38,10 +38,31 @@ class CurrencyConverterViewModel {
     }
     
     func getExchangeRates(from: String, to: String, completion: @escaping(_ report : ExchangeRateResult?, Error?)->Void){
+        let queryItems = [NSURLQueryItem(name: "base", value: from), NSURLQueryItem(name: "symbols", value: to)]
+        let urlComps = NSURLComponents(string: "https://fixer-fixer-currency-v1.p.rapidapi.com/latest")!
+        urlComps.queryItems = queryItems as [URLQueryItem]
+        let url = urlComps.url!
         
-        var exchangeRateResults: ExchangeRateResult?
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = headers
+        request.httpMethod = "GET"
         
-        let urlString = "https://fixer-fixer-currency-v1.p.rapidapi.com/latest?base=\(from)&symbols=\(to)"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let exchangeRateResults = try JSONDecoder().decode(ExchangeRateResult.self, from: data)
+                completion(exchangeRateResults, nil)
+            } catch let apiError {
+                completion(nil, apiError)
+                print(apiError)
+            }
+            }.resume()
+    }
+    
+    func getSupportedCurrencies(completion: @escaping(_ report : SupportedCurrenciesResult?, Error?)->Void){
+        var supportedCurrencies: SupportedCurrenciesResult?
+        
+        let urlString = "https://fixer-fixer-currency-v1.p.rapidapi.com/symbols"
         
         guard let url = URL(string: urlString) else { fatalError("Error while parsing url") }
         
@@ -49,22 +70,16 @@ class CurrencyConverterViewModel {
         request.allHTTPHeaderFields = headers
         request.httpMethod = "GET"
         
-        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
-                exchangeRateResults = try JSONDecoder().decode(ExchangeRateResult.self, from: data)
-                completion(exchangeRateResults, nil)
+                supportedCurrencies = try JSONDecoder().decode(SupportedCurrenciesResult.self, from: data)
+                completion(supportedCurrencies, nil)
             } catch let apiError {
                 completion(nil, apiError)
                 print(apiError)
             }
             }.resume()
-        
-    }
-    
-    func new(){
-        
     }
     
 }

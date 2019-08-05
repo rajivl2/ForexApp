@@ -23,6 +23,7 @@ class DetailsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = UIColor(red: 120/255, green: 150/255, blue: 200/255, alpha: 1)
         setUpViews()
     }
     

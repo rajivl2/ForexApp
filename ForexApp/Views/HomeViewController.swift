@@ -23,7 +23,8 @@ class HomeViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("Currency Converter", for: .normal)
         btn.backgroundColor = UIColor.clear
-        btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return btn
     }()
     
@@ -31,7 +32,8 @@ class HomeViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("Exchange Rate Calculator", for: .normal)
         btn.backgroundColor = UIColor.clear
-        btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return btn
     }()
     
@@ -40,8 +42,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
-        self.navigationController?.isNavigationBarHidden = false
+        self.view.backgroundColor = UIColor(red: 120/255, green: 150/255, blue: 200/255, alpha: 1)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BG1")!)
+        
+        self.navigationController?.isNavigationBarHidden = true
         
         setUpViews()
         
@@ -63,14 +67,14 @@ class HomeViewController: UIViewController {
         self.view.addSubview(currencyConverterButton)
         currencyConverterButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(350)
+            make.centerY.equalToSuperview().offset(-40)
             make.width.equalTo(300)
         }
         
         self.view.addSubview(currencyRateCalculatorButton)
         currencyRateCalculatorButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(currencyConverterButton.snp.bottom).offset(80)
+            make.centerY.equalToSuperview().offset(40)
             make.width.equalTo(300)
         }
         
@@ -81,6 +85,7 @@ class HomeViewController: UIViewController {
     
     @objc func currencyConverterButtonTapped(){
         let currncyConverterVC = CurrencyConverterViewController()
+        currncyConverterVC.getSupportedCurresciesForPicker()
         self.navigationController?.pushViewController(currncyConverterVC, animated: true)
     }
     

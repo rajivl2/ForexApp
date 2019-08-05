@@ -19,6 +19,9 @@ class ExchangeResultTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor(red: 120/255, green: 150/255, blue: 200/255, alpha: 1)
+        //self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "BG1")!)
+        
         tableView.register(DetailsTableViewCell.self, forCellReuseIdentifier: "cell")
         self.navigationController?.isNavigationBarHidden = false
         
@@ -109,11 +112,19 @@ class ExchangeResultTableViewController: UITableViewController {
         let currVM = CurrencyConverterViewModel()
         let from = self.fromCurrency ?? ""
         let to = self.toCurrencies ?? ""
+        let exchangeRateVC = ExchangeRateViewController()
         
         currVM.getExchangeRates(from: from, to: to) { (data, error) in
             DispatchQueue.main.async {
-                self.results = data
-                self.tableView.reloadData()
+                if data != nil {
+                    self.results = data
+                    self.tableView.reloadData()
+                } else {
+                    //print(error?.localizedDescription)
+                    exchangeRateVC.errorMessage.text = "Invalid Request !"
+                    self.navigationController?.popViewController(animated: true)
+                    //self.navigationController?.pushViewController(self.exchangeRateVC, animated: true)
+                }
             }
             
         }
