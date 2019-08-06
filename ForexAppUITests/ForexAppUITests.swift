@@ -31,4 +31,41 @@ class ForexAppUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testPageElements(){
+        
+        let app = XCUIApplication()
+        let appName = app.staticTexts["FOREX"]
+        XCTAssertTrue(appName.exists)
+        
+        let currencyConverterButton = app.buttons["Currency Converter"]
+        let exchangeRateCalculatorButton = app.buttons["Exchange Rate Calculator"]
+        
+        XCTAssertTrue(currencyConverterButton.exists)
+        XCTAssertTrue(exchangeRateCalculatorButton.exists)
+        
+        currencyConverterButton.tap()
+        let currencyConverterLabel = app.staticTexts["Currency Converter"]
+        let fromCurrencyLabel = app.staticTexts["From "]
+        let toLabel = app.staticTexts["To "]
+        let amountLabel = app.staticTexts["Amount "]
+        
+        XCTAssertTrue(currencyConverterLabel.exists)
+        XCTAssertTrue(fromCurrencyLabel.exists)
+        XCTAssertTrue(toLabel.exists)
+        XCTAssertTrue(amountLabel.exists)
+        
+        let backButton = app.navigationBars["ForexApp.CurrencyConverterView"].buttons["Back"]
+        backButton.tap()
+        
+        exchangeRateCalculatorButton.tap()
+        
+        let exchangeRateTittle = app.staticTexts["Exchange Rate Calculator"]
+        let baseCurrencyLabel = app.staticTexts["Base Currency: "]
+        let targetCurrencyLabel = app.staticTexts["Target Currencies:  "]
+        
+        XCTAssertTrue(exchangeRateTittle.exists)
+        XCTAssertTrue(baseCurrencyLabel.exists)
+        XCTAssertTrue(targetCurrencyLabel.exists)
+        
+    }
 }

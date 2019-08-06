@@ -11,7 +11,6 @@
 		61264CA522F18FE000A73D64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CA422F18FE000A73D64 /* HomeViewController.swift */; };
 		61264CAA22F18FE200A73D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61264CA922F18FE200A73D64 /* Assets.xcassets */; };
 		61264CAD22F18FE200A73D64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61264CAB22F18FE200A73D64 /* LaunchScreen.storyboard */; };
-		61264CB822F18FE200A73D64 /* ForexAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CB722F18FE200A73D64 /* ForexAppTests.swift */; };
 		61264CC322F18FE200A73D64 /* ForexAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CC222F18FE200A73D64 /* ForexAppUITests.swift */; };
 		61264CD122F1920D00A73D64 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61264CD022F1920D00A73D64 /* SnapKit.framework */; };
 		61264CD222F1920D00A73D64 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 61264CD022F1920D00A73D64 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -25,6 +24,7 @@
 		61264CE822F1AF6C00A73D64 /* ExchangeResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */; };
 		61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */; };
 		61462ED222F4125200086ADD /* SupportedCurrenciesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */; };
+		616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,6 @@
 		61264CAC22F18FE200A73D64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61264CAE22F18FE200A73D64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61264CB322F18FE200A73D64 /* ForexAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForexAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		61264CB722F18FE200A73D64 /* ForexAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexAppTests.swift; sourceTree = "<group>"; };
 		61264CB922F18FE200A73D64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61264CBE22F18FE200A73D64 /* ForexAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForexAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61264CC222F18FE200A73D64 /* ForexAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexAppUITests.swift; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeResultTableViewController.swift; sourceTree = "<group>"; };
 		61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesResult.swift; sourceTree = "<group>"; };
+		616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +148,8 @@
 		61264CB622F18FE200A73D64 /* ForexAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				61264CB722F18FE200A73D64 /* ForexAppTests.swift */,
 				61264CB922F18FE200A73D64 /* Info.plist */,
+				616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */,
 			);
 			path = ForexAppTests;
 			sourceTree = "<group>";
@@ -267,6 +267,7 @@
 					};
 					61264CB222F18FE200A73D64 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 61264C9E22F18FE000A73D64;
 					};
 					61264CBD22F18FE200A73D64 = {
@@ -345,7 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61264CB822F18FE200A73D64 /* ForexAppTests.swift in Sources */,
+				616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +550,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ForexAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -558,6 +560,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = f.ForexAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ForexApp.app/ForexApp";
@@ -569,6 +572,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ForexAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
