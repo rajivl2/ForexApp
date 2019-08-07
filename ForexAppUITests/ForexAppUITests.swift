@@ -61,7 +61,7 @@ class ForexAppUITests: XCTestCase {
         
         let exchangeRateTittle = app.staticTexts["Exchange Rate Calculator"]
         let baseCurrencyLabel = app.staticTexts["Base Currency: "]
-        let targetCurrencyLabel = app.staticTexts["Target Currencies:  "]
+        let targetCurrencyLabel = app.staticTexts["Target Currencies: "]
         
         XCTAssertTrue(exchangeRateTittle.exists)
         XCTAssertTrue(baseCurrencyLabel.exists)

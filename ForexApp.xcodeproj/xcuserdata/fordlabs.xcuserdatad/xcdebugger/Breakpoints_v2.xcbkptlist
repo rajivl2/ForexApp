@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexApp/Views/CurrencyConverterViewController.swift"
-            timestampString = "586788392.488476"
+            timestampString = "586848895.524475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexApp/Views/CurrencyConverterViewController.swift"
-            timestampString = "586788392.4885319"
+            timestampString = "586848895.5247591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexApp/Views/CurrencyConverterViewController.swift"
-            timestampString = "586788392.488605"
+            timestampString = "586848895.524979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexApp/Views/CurrencyConverterViewController.swift"
-            timestampString = "586788392.488639"
+            timestampString = "586848895.52517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "253"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexApp/Views/CurrencyConverterViewController.swift"
-            timestampString = "586788392.4886889"
+            timestampString = "586848895.525377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexApp/Views/ExchangeRateViewController.swift"
-            timestampString = "586682226.32318"
+            timestampString = "586848895.525566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
@@ -202,12 +202,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ForexAppUITests/ForexAppUITests.swift"
-            timestampString = "586789150.609738"
+            timestampString = "586848895.525637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "testPageElements()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ForexAppTests/CurrencyConverterViewControllerTests.swift"
+            timestampString = "586848895.525679"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "testWhenCurrencyConverterViewControllerLoadedThenOneLabelThreeTextFieldsAndOneButtonPresent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

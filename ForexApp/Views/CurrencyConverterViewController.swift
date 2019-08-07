@@ -72,20 +72,20 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
     
     let fromtext: UITextField = {
         let from = UITextField()
-        from.placeholder = "Enter base currency "
+        from.placeholder = "Enter base currency"
         from.textColor = .black
         return from
     } ()
     let toText: UITextField = {
         let to = UITextField()
-        to.placeholder = "Enter desired currency "
+        to.placeholder = "Enter desired currency"
         to.textColor = .black
         return to
     }()
     
     let amount: UITextField = {
         let to = UITextField()
-        to.placeholder = "Enter Amount "
+        to.placeholder = "Enter Amount"
         to.textColor = .black
         return to
     }()

@@ -25,6 +25,8 @@
 		61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */; };
 		61462ED222F4125200086ADD /* SupportedCurrenciesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */; };
 		616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */; };
+		616591BB22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */; };
+		616591C122FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesResult.swift; sourceTree = "<group>"; };
 		616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewControllerTests.swift; sourceTree = "<group>"; };
+		616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 			children = (
 				61264CB922F18FE200A73D64 /* Info.plist */,
 				616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */,
+				616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */,
+				616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */,
 			);
 			path = ForexAppTests;
 			sourceTree = "<group>";
@@ -346,6 +352,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				616591C122FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift in Sources */,
+				616591BB22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift in Sources */,
 				616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

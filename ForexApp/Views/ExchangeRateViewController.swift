@@ -31,7 +31,7 @@ class ExchangeRateViewController: UIViewController {
     
     let toLabel: UILabel = {
         let name = UILabel()
-        name.text = "Target Currencies:  "
+        name.text = "Target Currencies: "
         name.font = UIFont.boldSystemFont(ofSize: 20)
         name.textAlignment = .center
         return name
