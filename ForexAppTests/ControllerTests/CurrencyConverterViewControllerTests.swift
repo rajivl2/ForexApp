@@ -39,12 +39,23 @@ class CurrencyConverterViewControllerTests: XCTestCase {
         XCTAssertNotNil(findTextFieldsForView(view: currencyConverterVC.view, placeholder: "Enter Amount"))
         
         XCTAssertNotNil(homeVCTest.findButtonsForView(view: currencyConverterVC.view, buttonTittle: "Convert"))
+        
+        XCTAssertNotNil(findUILabelWithAccessibilityIdentifierForView(view: currencyConverterVC.view, accIdentifier: "Result Label"))
     }
 
     func findTextFieldsForView(view: UIView, placeholder: String) -> UITextField?{
         for subview in view.subviews{
             if let textField = subview as? UITextField, textField.placeholder == placeholder {
                 return textField
+            }
+        }
+        return nil
+    }
+    
+    func findUILabelWithAccessibilityIdentifierForView(view: UIView, accIdentifier: String) -> UILabel?{
+        for subview in view.subviews{
+            if let label = subview as? UILabel, label.accessibilityIdentifier == accIdentifier {
+                return label
             }
         }
         return nil

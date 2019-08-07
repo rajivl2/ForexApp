@@ -27,6 +27,11 @@
 		616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */; };
 		616591BB22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */; };
 		616591C122FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */; };
+		618FDB3822FACF67002A96C2 /* ForexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB3722FACF67002A96C2 /* ForexAPI.swift */; };
+		618FDB3A22FAD666002A96C2 /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB3922FAD666002A96C2 /* ExchangeRateViewModel.swift */; };
+		618FDB3E22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB3D22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift */; };
+		618FDB4122FADA98002A96C2 /* MockForexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB4022FADA98002A96C2 /* MockForexAPI.swift */; };
+		618FDB4322FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB4222FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +91,11 @@
 		616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewControllerTests.swift; sourceTree = "<group>"; };
 		616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewControllerTests.swift; sourceTree = "<group>"; };
+		618FDB3722FACF67002A96C2 /* ForexAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexAPI.swift; sourceTree = "<group>"; };
+		618FDB3922FAD666002A96C2 /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
+		618FDB3D22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCoverterViewModelTests.swift; sourceTree = "<group>"; };
+		618FDB4022FADA98002A96C2 /* MockForexAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForexAPI.swift; sourceTree = "<group>"; };
+		618FDB4222FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +148,7 @@
 		61264CA122F18FE000A73D64 /* ForexApp */ = {
 			isa = PBXGroup;
 			children = (
+				616591C322FACEF60067EB64 /* API */,
 				61264CD622F192E800A73D64 /* ViewModels */,
 				61264CD522F192DD00A73D64 /* Views */,
 				61264CD422F192D300A73D64 /* Models */,
@@ -152,10 +163,10 @@
 		61264CB622F18FE200A73D64 /* ForexAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				618FDB3F22FADA81002A96C2 /* Mocks */,
+				618FDB3C22FADA28002A96C2 /* ViewModelTests */,
+				618FDB3B22FADA1D002A96C2 /* ControllerTests */,
 				61264CB922F18FE200A73D64 /* Info.plist */,
-				616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */,
-				616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */,
-				616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */,
 			);
 			path = ForexAppTests;
 			sourceTree = "<group>";
@@ -197,8 +208,44 @@
 			isa = PBXGroup;
 			children = (
 				61264CE122F1955E00A73D64 /* CurrencyConverterViewModel.swift */,
+				618FDB3922FAD666002A96C2 /* ExchangeRateViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		616591C322FACEF60067EB64 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				618FDB3722FACF67002A96C2 /* ForexAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		618FDB3B22FADA1D002A96C2 /* ControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */,
+				616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */,
+				616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */,
+			);
+			path = ControllerTests;
+			sourceTree = "<group>";
+		};
+		618FDB3C22FADA28002A96C2 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				618FDB3D22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift */,
+				618FDB4222FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift */,
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		618FDB3F22FADA81002A96C2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				618FDB4022FADA98002A96C2 /* MockForexAPI.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +390,8 @@
 				61264CE222F1955E00A73D64 /* CurrencyConverterViewModel.swift in Sources */,
 				61264CDE22F1943600A73D64 /* Query.swift in Sources */,
 				61264CA322F18FE000A73D64 /* AppDelegate.swift in Sources */,
+				618FDB3822FACF67002A96C2 /* ForexAPI.swift in Sources */,
+				618FDB3A22FAD666002A96C2 /* ExchangeRateViewModel.swift in Sources */,
 				61264CE022F1944400A73D64 /* Info.swift in Sources */,
 				61264CE822F1AF6C00A73D64 /* ExchangeResultTableViewController.swift in Sources */,
 			);
@@ -354,7 +403,10 @@
 			files = (
 				616591C122FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift in Sources */,
 				616591BB22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift in Sources */,
+				618FDB4322FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift in Sources */,
 				616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */,
+				618FDB3E22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift in Sources */,
+				618FDB4122FADA98002A96C2 /* MockForexAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

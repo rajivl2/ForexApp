@@ -57,6 +57,7 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         name.textColor = .black
         name.font = UIFont.boldSystemFont(ofSize: 25)
         name.textAlignment = .center
+        name.accessibilityIdentifier = "Result Label"
         return name
     }()
     
