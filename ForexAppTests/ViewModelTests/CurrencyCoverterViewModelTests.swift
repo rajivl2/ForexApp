@@ -20,12 +20,18 @@ class CurrencyCoverterViewModelTests: XCTestCase {
     }
 
     func testWhenCurrencyConverterViewModelthenShouldCallAPI(){
+        let expectation = self.expectation(description: "Testing Succeeds")
+        
         currencyConverterVM.getConvertedCurrency(from: "USD", to: "INR", amount: 10) { (_ , _ ) in }
         
         XCTAssertTrue(apiClient.getConvertedCurrencyMethodCalled)
         
         currencyConverterVM.getSupportedCurrencies { (result , error ) in
-            XCTAssertEqual(self.apiClient.supportedCurrency.success, result?.success)
+            XCTAssertEqual(result?.success, true)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0) { (_) -> Void in
         }
         
         XCTAssertTrue(apiClient.getSupportedCurrenciesMethodCalled)

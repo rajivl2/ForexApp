@@ -15,7 +15,7 @@ class MockForexAPI: ForexAPI{
     var getExchangeRatesMethodCalled = false
     var getSupportedCurrenciesMethodCalled = false
     
-    var supportedCurrency = SupportedCurrenciesResult(success: true, symbols: [:])
+    var supportedCurrency = SupportedCurrenciesResult(success: false, symbols: [:])
     
     override func getConvertedCurrency(from baseCurrency: String, to targetCurrency: String, amount: Double, completion: @escaping (CurrencyConverterResult?, Error?) -> Void) {
         self.getConvertedCurrencyMethodCalled = true
@@ -27,6 +27,7 @@ class MockForexAPI: ForexAPI{
     
     override func getSupportedCurrencies(completion: @escaping (SupportedCurrenciesResult?, Error?) -> Void) {
         self.getSupportedCurrenciesMethodCalled = true
+        self.supportedCurrency.success = true
         completion(supportedCurrency,nil)
     }
 }

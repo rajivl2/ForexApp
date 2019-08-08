@@ -11,6 +11,8 @@ import SnapKit
 
 class HomeViewController: UIViewController {
 
+    weak var homeVCDelegate: HomeViewControllerDelegate?
+    
     var appName: UILabel = {
         let name = UILabel()
         name.text = "FOREX"
@@ -84,14 +86,15 @@ class HomeViewController: UIViewController {
     }
     
     @objc func currencyConverterButtonTapped(){
-        let currncyConverterVC = CurrencyConverterViewController()
-        currncyConverterVC.getSupportedCurresciesForPicker()
-        self.navigationController?.pushViewController(currncyConverterVC, animated: true)
+        homeVCDelegate?.currencyConverterButtonTapped()
     }
     
     @objc func currencyRateCalculatorButtonTapped(){
-        let exchangeRateVC = ExchangeRateViewController()
-        self.navigationController?.pushViewController(exchangeRateVC, animated: true)
+        homeVCDelegate?.currencyRateCalculatorButtonTapped()
     }
 }
 
+protocol HomeViewControllerDelegate : class {
+    func currencyConverterButtonTapped()
+    func currencyRateCalculatorButtonTapped()
+}

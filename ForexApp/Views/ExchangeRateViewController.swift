@@ -134,6 +134,7 @@ class ExchangeRateViewController: UIViewController {
         
         if self.fromtext.text?.count != 3 {
             displayErrorMessage(message: "Please enter valid currency code !")
+            return
         }
 
         

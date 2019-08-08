@@ -12,11 +12,17 @@ import XCTest
 class HomeViewControllerTests: XCTestCase {
 
     var homeVC: HomeViewController!
+    var forexAppCoordinator: ForexHomeCoordinator!
+    var mockNavigationController: MockNavigationController!
     
     override func setUp() {
         
         homeVC = HomeViewController()
-        _ = MockNavigationController(rootViewController: homeVC)
+        
+        mockNavigationController = MockNavigationController()
+        forexAppCoordinator = ForexHomeCoordinator(navController: mockNavigationController)
+        homeVC.homeVCDelegate = forexAppCoordinator
+        
         _ = homeVC.view
     }
     
@@ -41,12 +47,12 @@ class HomeViewControllerTests: XCTestCase {
         let currencyConverterButton = findButtonsForView(view: homeVC.view, buttonTittle: "Currency Converter")
         currencyConverterButton?.sendActions(for: .touchUpInside)
         
-        XCTAssertNotNil(homeVC.navigationController?.topViewController as? CurrencyConverterViewController)
+        XCTAssertNotNil(mockNavigationController.topViewController as? CurrencyConverterViewController)
         
         let exchangeRateCalculatorButton = findButtonsForView(view: homeVC.view, buttonTittle: "Exchange Rate Calculator")
         exchangeRateCalculatorButton?.sendActions(for: .touchUpInside)
         
-        XCTAssertNotNil(homeVC.navigationController?.topViewController as? ExchangeRateViewController)
+        XCTAssertNotNil(mockNavigationController.topViewController as? ExchangeRateViewController)
         
         
     }

@@ -32,6 +32,8 @@
 		618FDB3E22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB3D22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift */; };
 		618FDB4122FADA98002A96C2 /* MockForexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB4022FADA98002A96C2 /* MockForexAPI.swift */; };
 		618FDB4322FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB4222FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift */; };
+		618FDB4622FC1AC0002A96C2 /* ForexHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB4522FC1AC0002A96C2 /* ForexHomeCoordinator.swift */; };
+		618FDB4922FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618FDB4822FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		618FDB3D22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCoverterViewModelTests.swift; sourceTree = "<group>"; };
 		618FDB4022FADA98002A96C2 /* MockForexAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForexAPI.swift; sourceTree = "<group>"; };
 		618FDB4222FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModelTests.swift; sourceTree = "<group>"; };
+		618FDB4522FC1AC0002A96C2 /* ForexHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexHomeCoordinator.swift; sourceTree = "<group>"; };
+		618FDB4822FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexHomeCoordinatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 		61264CA122F18FE000A73D64 /* ForexApp */ = {
 			isa = PBXGroup;
 			children = (
+				618FDB4422FC1A8F002A96C2 /* Coordinators */,
 				616591C322FACEF60067EB64 /* API */,
 				61264CD622F192E800A73D64 /* ViewModels */,
 				61264CD522F192DD00A73D64 /* Views */,
@@ -163,6 +168,7 @@
 		61264CB622F18FE200A73D64 /* ForexAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				618FDB4722FC2D42002A96C2 /* CoordinatorTests */,
 				618FDB3F22FADA81002A96C2 /* Mocks */,
 				618FDB3C22FADA28002A96C2 /* ViewModelTests */,
 				618FDB3B22FADA1D002A96C2 /* ControllerTests */,
@@ -246,6 +252,22 @@
 				618FDB4022FADA98002A96C2 /* MockForexAPI.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		618FDB4422FC1A8F002A96C2 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				618FDB4522FC1AC0002A96C2 /* ForexHomeCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		618FDB4722FC2D42002A96C2 /* CoordinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				618FDB4822FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift */,
+			);
+			path = CoordinatorTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +407,7 @@
 				61462ED222F4125200086ADD /* SupportedCurrenciesResult.swift in Sources */,
 				61264CA522F18FE000A73D64 /* HomeViewController.swift in Sources */,
 				61264CE622F1A81E00A73D64 /* ExchangeRateResult.swift in Sources */,
+				618FDB4622FC1AC0002A96C2 /* ForexHomeCoordinator.swift in Sources */,
 				61264CDA22F1937A00A73D64 /* ExchangeRateViewController.swift in Sources */,
 				61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */,
 				61264CE222F1955E00A73D64 /* CurrencyConverterViewModel.swift in Sources */,
@@ -405,6 +428,7 @@
 				616591BB22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift in Sources */,
 				618FDB4322FAE7E2002A96C2 /* ExchangeRateViewModelTests.swift in Sources */,
 				616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */,
+				618FDB4922FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift in Sources */,
 				618FDB3E22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift in Sources */,
 				618FDB4122FADA98002A96C2 /* MockForexAPI.swift in Sources */,
 			);

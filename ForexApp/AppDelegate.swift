@@ -12,15 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var forexHomeCoordinator: ForexHomeCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeVC = HomeViewController()
-        let navController = UINavigationController.init(rootViewController: homeVC)
+        let navController = UINavigationController.init()
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
+        
+        forexHomeCoordinator = ForexHomeCoordinator(navController: navController)
+        
+        forexHomeCoordinator?.start()
         
         return true
     }
