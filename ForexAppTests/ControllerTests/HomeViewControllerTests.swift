@@ -26,7 +26,7 @@ class HomeViewControllerTests: XCTestCase {
         _ = homeVC.view
     }
     
-    func testWhenHomeControllerLoadedThenOneLabelAndTwoButtonPresent(){
+    func test_WhenHomeControllerLoaded_ThenOneLabelAndTwoButtonPresent(){
         
         let appName = findLabelsForView(view: homeVC.view, labelText: "FOREX")
         
@@ -42,7 +42,7 @@ class HomeViewControllerTests: XCTestCase {
         
     }
     
-    func testGivenHomeViewControllerWhenButtonTappedThenNavigateToCurrencyViewController(){
+    func test_GivenHomeViewControllerWhenButtonTapped_ThenNavigateToCurrencyViewController(){
         
         let currencyConverterButton = findButtonsForView(view: homeVC.view, buttonTittle: "Currency Converter")
         currencyConverterButton?.sendActions(for: .touchUpInside)

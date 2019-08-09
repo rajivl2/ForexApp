@@ -10,10 +10,10 @@ import UIKit
 
 class ExchangeRateViewController: UIViewController {
 
+    weak var delegate: ExchangeRateViewControllerDelegate?
     var results: ExchangeRateResult?
-    let tableVC = ExchangeResultTableViewController()
     
-    let appName: UILabel = {
+    private let appName: UILabel = {
         let name = UILabel()
         name.text = "Exchange Rate Calculator"
         name.font = UIFont.boldSystemFont(ofSize: 25)
@@ -21,7 +21,7 @@ class ExchangeRateViewController: UIViewController {
         return name
     }()
     
-    let fromLabel: UILabel = {
+    private let fromLabel: UILabel = {
         let name = UILabel()
         name.text = "Base Currency: "
         name.font = UIFont.boldSystemFont(ofSize: 20)
@@ -29,7 +29,7 @@ class ExchangeRateViewController: UIViewController {
         return name
     }()
     
-    let toLabel: UILabel = {
+    private let toLabel: UILabel = {
         let name = UILabel()
         name.text = "Target Currencies: "
         name.font = UIFont.boldSystemFont(ofSize: 20)
@@ -37,7 +37,7 @@ class ExchangeRateViewController: UIViewController {
         return name
     }()
     
-    let exchangeRateButton: UIButton = {
+    private let exchangeRateButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Get Exchange Rates", for: .normal)
         btn.backgroundColor = UIColor.blue
@@ -46,12 +46,12 @@ class ExchangeRateViewController: UIViewController {
         return btn
     }()
     
-    let fromtext: UITextField = {
+    private let fromtext: UITextField = {
         let from = UITextField()
         from.placeholder = "like EUR"
         return from
     } ()
-    let toText: UITextField = {
+    private let toText: UITextField = {
         let to = UITextField()
         to.placeholder = "like INR,USD"
         return to
@@ -132,16 +132,15 @@ class ExchangeRateViewController: UIViewController {
     
     @objc func exchangeRateButtonTapped(){
         
-        if self.fromtext.text?.count != 3 {
+        guard let fromCurrency = self.fromtext.text,
+            fromCurrency.count == 3 else {
             displayErrorMessage(message: "Please enter valid currency code !")
             return
         }
-
         
-        tableVC.fromCurrency = self.fromtext.text
-        tableVC.toCurrencies = self.toText.text
         
-        self.navigationController?.pushViewController(tableVC, animated: true)
+        
+        self.delegate?.exchangeRateButtonTapped(fromCurrency: fromCurrency, toCurrencies: self.toText.text ?? "")
 
     }
     
@@ -177,4 +176,8 @@ class ExchangeRateViewController: UIViewController {
         toText.resignFirstResponder()
     }
     
+}
+
+protocol ExchangeRateViewControllerDelegate : class {
+    func exchangeRateButtonTapped(fromCurrency: String, toCurrencies: String)
 }

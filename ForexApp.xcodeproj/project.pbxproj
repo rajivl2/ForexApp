@@ -24,6 +24,9 @@
 		61264CE822F1AF6C00A73D64 /* ExchangeResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */; };
 		61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */; };
 		61462ED222F4125200086ADD /* SupportedCurrenciesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */; };
+		614D523D22FD6D39005885C6 /* ExchangeRateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D523C22FD6D39005885C6 /* ExchangeRateCoordinator.swift */; };
+		614D523F22FD77C8005885C6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D523E22FD77C8005885C6 /* Coordinator.swift */; };
+		614D524122FD8270005885C6 /* ExchangeRateCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D524022FD8270005885C6 /* ExchangeRateCoordinatorTests.swift */; };
 		616591B722F9B0180067EB64 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */; };
 		616591BB22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */; };
 		616591C122FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */; };
@@ -90,6 +93,9 @@
 		61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeResultTableViewController.swift; sourceTree = "<group>"; };
 		61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedCurrenciesResult.swift; sourceTree = "<group>"; };
+		614D523C22FD6D39005885C6 /* ExchangeRateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateCoordinator.swift; sourceTree = "<group>"; };
+		614D523E22FD77C8005885C6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		614D524022FD8270005885C6 /* ExchangeRateCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateCoordinatorTests.swift; sourceTree = "<group>"; };
 		616591B622F9B0180067EB64 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		616591BA22FA82E10067EB64 /* CurrencyConverterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewControllerTests.swift; sourceTree = "<group>"; };
 		616591C022FA9A4B0067EB64 /* ExchangeRateViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewControllerTests.swift; sourceTree = "<group>"; };
@@ -152,11 +158,9 @@
 		61264CA122F18FE000A73D64 /* ForexApp */ = {
 			isa = PBXGroup;
 			children = (
-				618FDB4422FC1A8F002A96C2 /* Coordinators */,
-				616591C322FACEF60067EB64 /* API */,
-				61264CD622F192E800A73D64 /* ViewModels */,
-				61264CD522F192DD00A73D64 /* Views */,
-				61264CD422F192D300A73D64 /* Models */,
+				614D524422FD96BE005885C6 /* Common */,
+				614D524222FD9684005885C6 /* CurrencyConverter */,
+				614D524322FD969C005885C6 /* ExchangeRateCalculator */,
 				61264CA222F18FE000A73D64 /* AppDelegate.swift */,
 				61264CA922F18FE200A73D64 /* Assets.xcassets */,
 				61264CAB22F18FE200A73D64 /* LaunchScreen.storyboard */,
@@ -168,9 +172,9 @@
 		61264CB622F18FE200A73D64 /* ForexAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				618FDB4722FC2D42002A96C2 /* CoordinatorTests */,
 				618FDB3F22FADA81002A96C2 /* Mocks */,
 				618FDB3C22FADA28002A96C2 /* ViewModelTests */,
+				618FDB4722FC2D42002A96C2 /* CoordinatorTests */,
 				618FDB3B22FADA1D002A96C2 /* ControllerTests */,
 				61264CB922F18FE200A73D64 /* Info.plist */,
 			);
@@ -192,17 +196,94 @@
 				61264CDB22F1941000A73D64 /* CurrencyConverterResult.swift */,
 				61264CDD22F1943600A73D64 /* Query.swift */,
 				61264CDF22F1944400A73D64 /* Info.swift */,
-				61264CE522F1A81E00A73D64 /* ExchangeRateResult.swift */,
 				61462ED122F4125200086ADD /* SupportedCurrenciesResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		61264CD522F192DD00A73D64 /* Views */ = {
+		614D524222FD9684005885C6 /* CurrencyConverter */ = {
+			isa = PBXGroup;
+			children = (
+				614D535522FDA55A005885C6 /* ViewModels */,
+				614D535422FDA548005885C6 /* Views */,
+				61264CD422F192D300A73D64 /* Models */,
+			);
+			path = CurrencyConverter;
+			sourceTree = "<group>";
+		};
+		614D524322FD969C005885C6 /* ExchangeRateCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				614D535822FDA579005885C6 /* Coordinators */,
+				614D535722FDA56E005885C6 /* ViewModels */,
+				614D535622FDA567005885C6 /* Views */,
+				614D524522FD97B1005885C6 /* Models */,
+			);
+			path = ExchangeRateCalculator;
+			sourceTree = "<group>";
+		};
+		614D524422FD96BE005885C6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				614D535322FDA529005885C6 /* API */,
+				614D535222FDA51D005885C6 /* Coordinates */,
+				614D535022FDA4F5005885C6 /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		614D524522FD97B1005885C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61264CE522F1A81E00A73D64 /* ExchangeRateResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		614D535022FDA4F5005885C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				61264CA422F18FE000A73D64 /* HomeViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		614D535222FDA51D005885C6 /* Coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				614D523E22FD77C8005885C6 /* Coordinator.swift */,
+				618FDB4522FC1AC0002A96C2 /* ForexHomeCoordinator.swift */,
+			);
+			path = Coordinates;
+			sourceTree = "<group>";
+		};
+		614D535322FDA529005885C6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				618FDB3722FACF67002A96C2 /* ForexAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		614D535422FDA548005885C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				61264CD722F1936000A73D64 /* CurrencyConverterViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		614D535522FDA55A005885C6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				61264CE122F1955E00A73D64 /* CurrencyConverterViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		614D535622FDA567005885C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				61264CD922F1937A00A73D64 /* ExchangeRateViewController.swift */,
 				61264CE722F1AF6C00A73D64 /* ExchangeResultTableViewController.swift */,
 				61264CE922F1AFEF00A73D64 /* DetailsTableViewCell.swift */,
@@ -210,21 +291,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		61264CD622F192E800A73D64 /* ViewModels */ = {
+		614D535722FDA56E005885C6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				61264CE122F1955E00A73D64 /* CurrencyConverterViewModel.swift */,
 				618FDB3922FAD666002A96C2 /* ExchangeRateViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		616591C322FACEF60067EB64 /* API */ = {
+		614D535822FDA579005885C6 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				618FDB3722FACF67002A96C2 /* ForexAPI.swift */,
+				614D523C22FD6D39005885C6 /* ExchangeRateCoordinator.swift */,
 			);
-			path = API;
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		618FDB3B22FADA1D002A96C2 /* ControllerTests */ = {
@@ -254,18 +334,11 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		618FDB4422FC1A8F002A96C2 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				618FDB4522FC1AC0002A96C2 /* ForexHomeCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
 		618FDB4722FC2D42002A96C2 /* CoordinatorTests */ = {
 			isa = PBXGroup;
 			children = (
 				618FDB4822FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift */,
+				614D524022FD8270005885C6 /* ExchangeRateCoordinatorTests.swift */,
 			);
 			path = CoordinatorTests;
 			sourceTree = "<group>";
@@ -412,7 +485,9 @@
 				61264CEA22F1AFEF00A73D64 /* DetailsTableViewCell.swift in Sources */,
 				61264CE222F1955E00A73D64 /* CurrencyConverterViewModel.swift in Sources */,
 				61264CDE22F1943600A73D64 /* Query.swift in Sources */,
+				614D523F22FD77C8005885C6 /* Coordinator.swift in Sources */,
 				61264CA322F18FE000A73D64 /* AppDelegate.swift in Sources */,
+				614D523D22FD6D39005885C6 /* ExchangeRateCoordinator.swift in Sources */,
 				618FDB3822FACF67002A96C2 /* ForexAPI.swift in Sources */,
 				618FDB3A22FAD666002A96C2 /* ExchangeRateViewModel.swift in Sources */,
 				61264CE022F1944400A73D64 /* Info.swift in Sources */,
@@ -431,6 +506,7 @@
 				618FDB4922FC2D74002A96C2 /* ForexHomeCoordinatorTests.swift in Sources */,
 				618FDB3E22FADA63002A96C2 /* CurrencyCoverterViewModelTests.swift in Sources */,
 				618FDB4122FADA98002A96C2 /* MockForexAPI.swift in Sources */,
+				614D524122FD8270005885C6 /* ExchangeRateCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

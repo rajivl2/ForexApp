@@ -9,9 +9,13 @@
 import Foundation
 import UIKit
 
-class ForexHomeCoordinator {
+class ForexHomeCoordinator : Coordinator {
+    
+    var childCoordinators: [Coordinator] = []
+    
     let homeVC = HomeViewController()
     let navigationController: UINavigationController
+    var exchangeRateCoordinator: ExchangeRateCoordinator!
     
     init(navController: UINavigationController) {
         self.navigationController = navController
@@ -31,9 +35,13 @@ extension ForexHomeCoordinator : HomeViewControllerDelegate {
     }
     
     func currencyRateCalculatorButtonTapped() {
-        let exchangeRateVC = ExchangeRateViewController()
-        self.navigationController.pushViewController(exchangeRateVC, animated: true)
+        exchangeRateCoordinator = ExchangeRateCoordinator(navigationController: navigationController)
+        startChildCoordinator(coordinator: exchangeRateCoordinator)
     }
     
-    
+    func startChildCoordinator(coordinator: Coordinator){
+        childCoordinators.removeAll()
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
 }

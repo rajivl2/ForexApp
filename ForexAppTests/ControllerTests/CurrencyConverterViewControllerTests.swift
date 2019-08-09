@@ -22,7 +22,7 @@ class CurrencyConverterViewControllerTests: XCTestCase {
         _ = currencyConverterVC.view
     }
 
-    func testWhenCurrencyConverterViewControllerLoadedThenOneLabelThreeTextFieldsAndOneButtonPresent(){
+    func test_WhenCurrencyConverterViewControllerLoaded_ThenOneLabelThreeTextFieldsAndOneButtonPresent(){
         
         XCTAssertNotNil(homeVCTest.findLabelsForView(view: currencyConverterVC.view, labelText: "Currency Converter"))
         
@@ -32,15 +32,23 @@ class CurrencyConverterViewControllerTests: XCTestCase {
         
         XCTAssertNotNil(homeVCTest.findLabelsForView(view: currencyConverterVC.view, labelText: "Amount "))
         
-        XCTAssertNotNil(findTextFieldsForView(view: currencyConverterVC.view, placeholder: "Enter base currency"))
+        let fromCurrencyTextField = findTextFieldsForView(view: currencyConverterVC.view, placeholder: "Enter base currency")
         
-        XCTAssertNotNil(findTextFieldsForView(view: currencyConverterVC.view, placeholder: "Enter desired currency"))
+        XCTAssertNotNil(fromCurrencyTextField)
+        
+        let toCurrencyTextField = findTextFieldsForView(view: currencyConverterVC.view, placeholder: "Enter desired currency")
+        
+        XCTAssertNotNil(toCurrencyTextField)
         
         XCTAssertNotNil(findTextFieldsForView(view: currencyConverterVC.view, placeholder: "Enter Amount"))
         
         XCTAssertNotNil(homeVCTest.findButtonsForView(view: currencyConverterVC.view, buttonTittle: "Convert"))
         
         XCTAssertNotNil(findUILabelWithAccessibilityIdentifierForView(view: currencyConverterVC.view, accIdentifier: "Result Label"))
+        
+        XCTAssertEqual(fromCurrencyTextField?.inputView?.accessibilityIdentifier, "From Currency Picker")
+        
+        XCTAssertEqual(toCurrencyTextField?.inputView?.accessibilityIdentifier, "To Currency Picker")
     }
 
     func findTextFieldsForView(view: UIView, placeholder: String) -> UITextField?{

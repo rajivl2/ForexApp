@@ -10,14 +10,22 @@ import UIKit
 
 class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
 
-    var currencies = [String]()
+    private var currencies = [String]()
     
-    var supportedCurrencies = [String: String]()
+    private var supportedCurrencies = [String: String]()
     
-    let fromCurrencyPicker = UIPickerView()
-    let toCurrencyPicker = UIPickerView()
+    private let fromCurrencyPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.accessibilityIdentifier = "From Currency Picker"
+        return picker
+    }()
+    private let toCurrencyPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.accessibilityIdentifier = "To Currency Picker"
+        return picker
+    }()
     
-    var appName: UILabel = {
+    private let appName: UILabel = {
         let name = UILabel()
         name.text = "Currency Converter"
         name.font = UIFont.boldSystemFont(ofSize: 25)
@@ -25,7 +33,7 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         return name
     }()
     
-    var fromLabel: UILabel = {
+    private let fromLabel: UILabel = {
         let name = UILabel()
         name.text = "From "
         name.font = UIFont.boldSystemFont(ofSize: 20)
@@ -34,7 +42,7 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         return name
     }()
     
-    var toLabel: UILabel = {
+    private let toLabel: UILabel = {
         let name = UILabel()
         name.text = "To "
         name.font = UIFont.boldSystemFont(ofSize: 20)
@@ -43,7 +51,7 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         return name
     }()
     
-    var amountLabel: UILabel = {
+    private let amountLabel: UILabel = {
         let name = UILabel()
         name.text = "Amount "
         name.font = UIFont.boldSystemFont(ofSize: 20)
@@ -52,7 +60,7 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         return name
     }()
     
-    var resultLabel: UILabel = {
+    private let resultLabel: UILabel = {
         let name = UILabel()
         name.textColor = .black
         name.font = UIFont.boldSystemFont(ofSize: 25)
@@ -61,7 +69,7 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         return name
     }()
     
-    let claculateButton: UIButton = {
+    private let claculateButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Convert", for: .normal)
         btn.backgroundColor = UIColor.blue
@@ -71,20 +79,20 @@ class CurrencyConverterViewController: UIViewController,  UIPickerViewDelegate, 
         return btn
     }()
     
-    let fromtext: UITextField = {
+    private let fromtext: UITextField = {
         let from = UITextField()
         from.placeholder = "Enter base currency"
         from.textColor = .black
         return from
     } ()
-    let toText: UITextField = {
+    private let toText: UITextField = {
         let to = UITextField()
         to.placeholder = "Enter desired currency"
         to.textColor = .black
         return to
     }()
     
-    let amount: UITextField = {
+    private let amount: UITextField = {
         let to = UITextField()
         to.placeholder = "Enter Amount"
         to.textColor = .black

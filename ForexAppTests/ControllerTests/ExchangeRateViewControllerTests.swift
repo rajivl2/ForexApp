@@ -14,16 +14,18 @@ class ExchangeRateViewControllerTests: XCTestCase {
     var exchangeRateVC: ExchangeRateViewController!
     let homeVCTest = HomeViewControllerTests()
     let currencyVCTest = CurrencyConverterViewControllerTests()
+    var mockNavigationController: UINavigationController!
+    var exchangeRateCoordinator: ExchangeRateCoordinator!
     
     override func setUp() {
         exchangeRateVC = ExchangeRateViewController()
-        let homeVC = HomeViewController()
-        _ = UINavigationController(rootViewController: homeVC)
-        //navController.pushViewController(currencyConverterVC, animated: true)
+        mockNavigationController = MockNavigationController()
+        exchangeRateCoordinator = ExchangeRateCoordinator(navigationController: mockNavigationController)
+        exchangeRateVC.delegate = exchangeRateCoordinator
         _ = exchangeRateVC.view
     }
     
-    func testWhenExchangeRateViewControllerLoadedThenOneLabelTwoTextFieldsAndOneButtonPresent(){
+    func test_WhenExchangeRateViewControllerLoaded_ThenOneLabelTwoTextFieldsAndOneButtonPresent(){
         
         XCTAssertNotNil(homeVCTest.findLabelsForView(view: exchangeRateVC.view, labelText: "Exchange Rate Calculator"))
         
@@ -36,6 +38,25 @@ class ExchangeRateViewControllerTests: XCTestCase {
         XCTAssertNotNil(currencyVCTest.findTextFieldsForView(view: exchangeRateVC.view, placeholder: "like INR,USD"))
         
         XCTAssertNotNil(homeVCTest.findButtonsForView(view: exchangeRateVC.view, buttonTittle: "Get Exchange Rates"))
+    }
+    
+    func test_GivenExchangeViewController_WhenGetExchangeRatesButtonTapped_ThenShouldDisplayTableViewController (){
+        
+        exchangeRateCoordinator.start()
+        
+        let exchangeRatebutton = homeVCTest.findButtonsForView(view: exchangeRateVC.view, buttonTittle: "Get Exchange Rates")
+        
+        let fromCurrencyText = currencyVCTest.findTextFieldsForView(view: exchangeRateVC.view, placeholder: "like EUR")
+        
+        fromCurrencyText?.text = "EUR"
+        
+        let toCurrencyText = currencyVCTest.findTextFieldsForView(view: exchangeRateVC.view, placeholder: "like INR,USD")
+        
+        toCurrencyText?.text = "INR"
+        
+        exchangeRatebutton?.sendActions(for: .touchUpInside)
+        
+        XCTAssertNotNil(mockNavigationController.topViewController as? ExchangeResultTableViewController)
     }
     
 }

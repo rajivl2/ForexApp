@@ -19,7 +19,7 @@ class ForexHomeCoordinatorTests: XCTestCase {
         forexHomeCoordinator = ForexHomeCoordinator(navController: mockNavController)
     }
 
-    func testWhenForexCoordinatorStartMethodCalledThenShouldShowHomeViewController(){
+    func test_WhenForexCoordinatorStartMethodCalled_ThenShouldShowHomeViewController(){
         forexHomeCoordinator.start()
         
         XCTAssert(self.mockNavController.topViewController?.isKind(of: HomeViewController.self) ?? false)

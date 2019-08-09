@@ -19,7 +19,7 @@ class CurrencyCoverterViewModelTests: XCTestCase {
         currencyConverterVM = CurrencyConverterViewModel(apiClient: apiClient)
     }
 
-    func testWhenCurrencyConverterViewModelthenShouldCallAPI(){
+    func test_WhenCurrencyConverterViewModel_ThenShouldCallAPI(){
         let expectation = self.expectation(description: "Testing Succeeds")
         
         currencyConverterVM.getConvertedCurrency(from: "USD", to: "INR", amount: 10) { (_ , _ ) in }

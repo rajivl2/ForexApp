@@ -19,7 +19,7 @@ class ExchangeRateViewModelTests: XCTestCase {
         exchangeRateVM = ExchangeRateViewModel(apiClient: apiClient)
     }
     
-    func testWhenCurrencyConverterViewModelthenShouldCallAPI(){
+    func test_WhenCurrencyConverterViewModel_ThenShouldCallAPI(){
         exchangeRateVM.getExchangeRates(from: "EUR", to: "INR") { (_ , _ ) in
         }
         

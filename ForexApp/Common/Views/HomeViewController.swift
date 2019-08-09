@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
 
     weak var homeVCDelegate: HomeViewControllerDelegate?
     
-    var appName: UILabel = {
+    private let appName: UILabel = {
         let name = UILabel()
         name.text = "FOREX"
         name.font = UIFont.boldSystemFont(ofSize: 25)
@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         return name
     }()
     
-    let currencyConverterButton: UIButton = {
+    private let currencyConverterButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Currency Converter", for: .normal)
         btn.backgroundColor = UIColor.clear
@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
         return btn
     }()
     
-    let currencyRateCalculatorButton: UIButton = {
+    private let currencyRateCalculatorButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("Exchange Rate Calculator", for: .normal)
         btn.backgroundColor = UIColor.clear
